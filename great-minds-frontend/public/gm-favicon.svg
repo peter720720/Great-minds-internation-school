@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-label="Great Mind International School logo">
+  <defs>
+    <linearGradient id="gradBg" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#183d7a" />
+      <stop offset="100%" stop-color="#0b224d" />
+    </linearGradient>
+    <linearGradient id="gradGold" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#f8e7a1" />
+      <stop offset="50%" stop-color="#d4af37" />
+      <stop offset="100%" stop-color="#b88a1d" />
+    </linearGradient>
+  </defs>
+
+  <rect width="128" height="128" rx="24" fill="#f8f5ee" />
+  <circle cx="64" cy="64" r="54" fill="url(#gradBg)" stroke="url(#gradGold)" stroke-width="6" />
+
+  <path d="M64 20L78 30L92 23L100 38L111 44L103 58L111 72L96 82L84 96L64 112L44 96L32 82L17 72L25 58L17 44L28 38L36 23L50 30Z" fill="none" stroke="url(#gradGold)" stroke-width="4" stroke-linejoin="round"/>
+
+  <path d="M64 26L75 34L83 48L75 61L64 67L53 61L45 48L53 34Z" fill="#f8f5ee" stroke="url(#gradGold)" stroke-width="3"/>
+  <path d="M38 84C46 64 53 52 64 52C75 52 82 63 90 84" fill="none" stroke="url(#gradGold)" stroke-width="4" stroke-linecap="round"/>
+
+  <circle cx="64" cy="71" r="15" fill="#f8f5ee" stroke="url(#gradGold)" stroke-width="3"/>
+  <text x="64" y="78" text-anchor="middle" font-size="24" font-weight="800" fill="#0b224d" font-family="Arial, Helvetica, sans-serif">GM</text>
+
+  <path d="M25 92C35 84 45 81 55 84" fill="none" stroke="url(#gradGold)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M103 92C93 84 83 81 73 84" fill="none" stroke="url(#gradGold)" stroke-width="3" stroke-linecap="round"/>
+  <path d="M26 93L36 101L46 93" fill="none" stroke="url(#gradGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M102 93L92 101L82 93" fill="none" stroke="url(#gradGold)" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

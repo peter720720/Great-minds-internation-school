@@ -1,0 +1,61 @@
+@import 'tailwindcss';
+
+@theme {
+  --color-school-navy: #0b224d;
+  --color-school-navyLight: #1d3f6d;
+  --color-school-gold: #d4af37;
+  --color-school-goldHover: #c89d1d;
+  --color-school-cream: #f8f5ee;
+}
+
+:root {
+  font-family: Inter, system-ui, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+  color: #0b224d;
+  background: #f8f5ee;
+  color-scheme: light;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 17px;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  background: #f8f5ee;
+  color: #0b224d;
+  font-size: 1rem;
+}
+
+body,
+input,
+textarea,
+select,
+button,
+a,
+span,
+p,
+li,
+label {
+  font-size: 1rem;
+}
+
+.text-xs {
+  font-size: 0.875rem !important;
+}
+
+.text-sm {
+  font-size: 0.95rem !important;
+}
+
+#root {
+  min-height: 100vh;
+}
