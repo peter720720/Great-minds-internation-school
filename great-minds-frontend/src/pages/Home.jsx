@@ -7,11 +7,31 @@ export default function Home() {
     const [currentSlide, setCurrentSlide] = useState(0);
     
     const sliderImages = [
-        "/slider-bg.jpg",
-        "/Assembly.png",
-        "/classroom.png",
-        "/playing-ball.png",
-        "/playing.png"
+        {
+            image: "/slider-bg.jpg",
+            title: <>Nurturing <span className="text-school-gold">Great Minds</span> For Global Impact</>,
+            description: "A vibrant learning environment built for academic excellence, digital growth, and strong character development."
+        },
+        {
+            image: "/Assembly.png",
+            title: <>Building <span className="text-school-gold">Confident Leaders</span> For Tomorrow</>,
+            description: "Empowering students to learn, lead, and succeed with courage, discipline, and purpose."
+        },
+        {
+            image: "/classroom.png",
+            title: <>Inspiring <span className="text-school-gold">Curious Learners</span> Every Day</>,
+            description: "A focused classroom where bright minds explore ideas, build knowledge, and grow together."
+        },
+        {
+            image: "/playing-ball.png",
+            title: <>Growing Through <span className="text-school-gold">Teamwork</span> And Play</>,
+            description: "Developing fitness, friendship, and confidence through active outdoor learning and play."
+        },
+        {
+            image: "/playing.png",
+            title: <>Excellence In <span className="text-school-gold">Every Challenge</span></>,
+            description: "Building teamwork, discipline, and determination through sport and shared achievement."
+        }
     ];
     const indicatorDots = [...sliderImages, sliderImages[0]];
     const activeIndicatorIndex = currentSlide === sliderImages.length - 1 ? sliderImages.length : currentSlide;
@@ -28,8 +48,8 @@ export default function Home() {
             {/* CAROUSEL SLIDER HERO COMPONENT */}
             <div className="relative h-[450px] md:h-[550px] bg-black overflow-hidden">
                 <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
-                    {sliderImages.map((img, index) => (
-                        <div key={index} className="min-w-full h-full relative" style={{ backgroundImage: `url(${img})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
+                    {sliderImages.map((slide, index) => (
+                        <div key={index} className="min-w-full h-full relative" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className="absolute inset-0 bg-black/50" />
                         </div>
                     ))}
@@ -38,12 +58,12 @@ export default function Home() {
                 {/* Hero Overlay Text */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-10">
                     <h2 className="text-2xl md:text-5xl font-extrabold uppercase tracking-tight text-white mb-4 max-w-3xl">
-                        Nurturing <span className="text-school-gold">Great Minds</span> For Global Impact
+                        {sliderImages[currentSlide].title}
                     </h2>
                     <p className="max-w-2xl text-sm md:text-lg text-gray-200 mb-8 font-medium">
-                        A vibrant learning environment built for academic excellence, digital growth, and strong character development.
+                        {sliderImages[currentSlide].description}
                     </p>
-                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none">
+                    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none">
                         <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-4 sm:px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase text-center">
                             Apply for Admission
                         </Link>
