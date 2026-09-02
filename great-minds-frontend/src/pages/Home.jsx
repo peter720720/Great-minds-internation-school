@@ -37,17 +37,17 @@ export default function Home() {
                 
                 {/* Hero Overlay Text */}
                 <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-10">
-                    <h2 className="text-3xl md:text-5xl font-extrabold uppercase tracking-tight text-white mb-4">
+                    <h2 className="text-2xl md:text-5xl font-extrabold uppercase tracking-tight text-white mb-4 max-w-3xl">
                         Nurturing <span className="text-school-gold">Great Minds</span> For Global Impact
                     </h2>
                     <p className="max-w-2xl text-sm md:text-lg text-gray-200 mb-8 font-medium">
                         A vibrant learning environment built for academic excellence, digital growth, and strong character development.
                     </p>
-                    <div className="flex gap-4">
-                        <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase">
+                    <div className="flex flex-col sm:flex-row gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none">
+                        <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-4 sm:px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase text-center">
                             Apply for Admission
                         </Link>
-                        <Link to="/about-us" className="border-2 border-white text-white font-bold px-6 py-3 rounded hover:bg-white hover:text-school-navy transition text-sm uppercase">
+                        <Link to="/about-us" className="border-2 border-white text-white font-bold px-4 sm:px-6 py-3 rounded hover:bg-white hover:text-school-navy transition text-sm uppercase text-center">
                             Explore Campus
                         </Link>
                     </div>

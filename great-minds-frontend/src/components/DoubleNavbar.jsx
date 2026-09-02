@@ -15,12 +15,12 @@ export default function DoubleNavbar() {
     return (
         <div className="w-full sticky top-0 z-50 shadow-md">
             {/* FIRST NAVBAR LAYER: Contact & High-Tier Info */}
-            <div className="bg-school-navy text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center border-b border-school-navyLight">
-                <div className="flex items-center gap-6">
+            <div className="bg-school-navy text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center border-b border-school-navyLight max-sm:justify-end">
+                <div className="hidden sm:flex items-center gap-6">
                     <span className="flex items-center gap-1"><Phone size={14} className="text-school-gold" /> +234 800 GREATMINDS</span>
                     <span className="hidden sm:flex items-center gap-1"><Mail size={14} className="text-school-gold" /> info@greatminds.edu.ng</span>
                 </div>
-                <div className="flex items-center gap-4">
+                <div className="flex items-center gap-4 max-sm:gap-3">
                     <Link to="/gallery" className="hover:text-school-gold transition">Photo Gallery</Link>
                     <span className="text-school-navyLight">|</span>
                     <Link to="/contact-us" className="hover:text-school-gold transition">Contact Us</Link>

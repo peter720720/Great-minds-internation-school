@@ -24,15 +24,16 @@
 html {
   scroll-behavior: smooth;
   font-size: 17px;
+  overflow-x: hidden;
 }
 
 body {
   margin: 0;
-  min-width: 320px;
   min-height: 100vh;
   background: #f8f5ee;
   color: #0b224d;
   font-size: 1rem;
+  overflow-x: hidden;
 }
 
 body,
