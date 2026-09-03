@@ -11,11 +11,12 @@ const aj = process.env.ARCJET_KEY && createArcjet ? createArcjet({
     characteristics: ["ip.src"],
     rules: [
         shield({ mode: "LIVE" }),
-        detectBot({ mode: "LIVE", allow: ["CATEGORY:SEARCH_ENGINE"] })
+        detectBot({ mode: process.env.NODE_ENV === "production" ? "LIVE" : "DRY_RUN", allow: ["CATEGORY:SEARCH_ENGINE"] })
     ],
 }) : null;
 
 module.exports = async (req, res, next) => {
+    if (process.env.NODE_ENV !== "production" && req.path === "/api/admin/upload") return next();
     if (!aj) return next();
     try {
         const decision = await aj.protect(req);
