@@ -10,6 +10,8 @@ export default function AdminDashboard() {
     const [messages, setMessages] = useState([]);
     const [title, setTitle] = useState('');
     const [imageFile, setImageFile] = useState(null);
+    const [newsTitle, setNewsTitle] = useState('');
+    const [newsContent, setNewsContent] = useState('');
     const [uploading, setUploading] = useState(false);
     const [feedback, setFeedback] = useState({ type: '', text: '' });
 
@@ -55,6 +57,19 @@ export default function AdminDashboard() {
         }
     };
 
+    const handleNewsSubmit = async (e) => {
+        e.preventDefault();
+        setFeedback({ type: '', text: '' });
+        try {
+            await api.post('/admin/news-events', { title: newsTitle, content: newsContent });
+            setFeedback({ type: 'success', text: 'News and event published successfully.' });
+            setNewsTitle('');
+            setNewsContent('');
+        } catch (err) {
+            setFeedback({ type: 'error', text: err.response?.data?.message || 'News and event publication failed.' });
+        }
+    };
+
     return (
         <div className="min-h-screen flex flex-col md:flex-row bg-gray-50">
             {/* Admin Side Menu Controls */}
@@ -69,6 +84,9 @@ export default function AdminDashboard() {
                 </button>
                 <button onClick={() => setView('upload')} className={`flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider rounded transition ${view === 'upload' ? 'bg-school-gold text-school-navy' : 'hover:bg-school-navyLight'}`}>
                     <Upload size={16} /> Media Upload
+                </button>
+                <button onClick={() => setView('news')} className={`flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider rounded transition ${view === 'news' ? 'bg-school-gold text-school-navy' : 'hover:bg-school-navyLight'}`}>
+                    <Image size={16} /> News & Events
                 </button>
                 <button onClick={() => setView('messages')} className={`flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider rounded transition ${view === 'messages' ? 'bg-school-gold text-school-navy' : 'hover:bg-school-navyLight'}`}>
                     <Mail size={16} /> Contact Mail ({metrics.unreadMessages})
@@ -117,6 +135,26 @@ export default function AdminDashboard() {
                             </div>
                             <button type="submit" disabled={uploading} className="bg-school-navy text-white text-xs font-bold uppercase px-6 py-3 rounded tracking-wider shadow hover:bg-school-navyLight disabled:bg-gray-400">
                                 {uploading ? 'Processing Assets...' : 'Broadcast to Website Gallery'}
+                            </button>
+                        </form>
+                    </div>
+                )}
+
+                {view === 'news' && (
+                    <div className="max-w-xl bg-white p-8 rounded shadow-sm">
+                        <h3 className="text-lg font-bold uppercase text-school-navy mb-4">Publish News &amp; Event</h3>
+                        {feedback.text && <div className={`p-3 text-xs font-bold rounded mb-4 ${feedback.type === 'success' ? 'bg-green-50 text-green-700' : 'bg-red-50 text-red-600'}`}>{feedback.text}</div>}
+                        <form onSubmit={handleNewsSubmit} className="space-y-4">
+                            <div>
+                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">News or Event Title</label>
+                                <input type="text" value={newsTitle} onChange={(e) => setNewsTitle(e.target.value)} className="w-full border p-2.5 rounded text-sm focus:outline-school-navy" placeholder="e.g., Interhouse Sports Day" required />
+                            </div>
+                            <div>
+                                <label className="block text-xs font-bold text-gray-500 uppercase mb-1">Information</label>
+                                <textarea value={newsContent} onChange={(e) => setNewsContent(e.target.value)} className="w-full border p-2.5 rounded text-sm focus:outline-school-navy resize-none" rows="6" placeholder="Write the news or event details here..." required />
+                            </div>
+                            <button type="submit" className="bg-school-navy text-white text-xs font-bold uppercase px-6 py-3 rounded tracking-wider shadow hover:bg-school-navyLight">
+                                Publish to News &amp; Events
                             </button>
                         </form>
                     </div>

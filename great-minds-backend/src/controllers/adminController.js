@@ -3,6 +3,7 @@ const Gallery = require('../models/Gallery');
 const Message = require('../models/Message');
 const Applicant = require('../models/Applicant');
 const Staff = require('../models/Staff');
+const NewsEvent = require('../models/NewsEvent');
 const cloudinary = require('../config/cloudinary');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
@@ -58,6 +59,17 @@ exports.getAdminDashboardMetrics = async (req, res) => {
             unreadMessages: await Message.countDocuments({ isRead: false })
         };
         res.status(200).json({ metrics: stats });
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+exports.createNewsEvent = async (req, res) => {
+    const { title, content } = req.body;
+    if (!title || !content) return res.status(400).json({ message: 'News title and content are required.' });
+    try {
+        const newsEvent = await NewsEvent.create({ title: xss(title), content: xss(content), createdBy: req.admin.id });
+        res.status(201).json({ message: 'News and event published.', newsEvent });
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

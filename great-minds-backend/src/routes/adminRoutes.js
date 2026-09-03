@@ -2,7 +2,8 @@ const express = require('express');
 const router = express.Router();
 const { 
     loginAdmin, uploadGalleryImage, getContactMessages, 
-    getAdminDashboardMetrics, approveStaffMember, deleteGalleryImage 
+    getAdminDashboardMetrics, approveStaffMember, deleteGalleryImage,
+    createNewsEvent
 } = require('../controllers/adminController');
 const { protectAdmin } = require('../middleware/auth');
 const upload = require('../middleware/upload');
@@ -13,5 +14,6 @@ router.post('/upload', protectAdmin, upload.single('image'), uploadGalleryImage)
 router.get('/messages', protectAdmin, getContactMessages);
 router.patch('/approve-staff/:staffId', protectAdmin, approveStaffMember);
 router.delete('/gallery/:id', protectAdmin, deleteGalleryImage);
+router.post('/news-events', protectAdmin, createNewsEvent);
 
 module.exports = router;

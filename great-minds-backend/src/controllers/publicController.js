@@ -1,6 +1,7 @@
 const Message = require('../models/Message');
 const Gallery = require('../models/Gallery');
 const xss = require('xss');
+const NewsEvent = require('../models/NewsEvent');
 
 exports.submitContactForm = async (req, res) => {
     const { name, email, subject, message } = req.body;
@@ -22,6 +23,15 @@ exports.getPublicGallery = async (req, res) => {
     try {
         const images = await Gallery.find().sort({ createdAt: -1 });
         res.status(200).json(images);
+    } catch (err) {
+        res.status(500).json({ error: err.message });
+    }
+};
+
+exports.getPublicNewsEvents = async (req, res) => {
+    try {
+        const newsEvents = await NewsEvent.find().sort({ createdAt: -1 });
+        res.status(200).json(newsEvents);
     } catch (err) {
         res.status(500).json({ error: err.message });
     }

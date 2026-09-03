@@ -14,6 +14,8 @@ import ApplicantPortal from './pages/ApplicantPortal';
 import StaffPortal from './pages/StaffPortal';
 import ContactUs from './pages/ContactUs';
 import PhotoGallery from './pages/PhotoGallery';
+import NewsEvents from './pages/NewsEvents';
+import SiteInfoPage from './pages/SiteInfoPage';
 
 function App() {
   return (
@@ -28,6 +30,12 @@ function App() {
               <Route path="/about-us" element={<AboutUs />} />
               <Route path="/contact-us" element={<ContactUs />} />
               <Route path="/gallery" element={<PhotoGallery />} />
+              <Route path="/news" element={<NewsEvents />} />
+              <Route path="/academics/primary" element={<SiteInfoPage title="Primary Section" description="A strong foundation for confident, curious, and capable learners." />} />
+              <Route path="/academics/secondary" element={<SiteInfoPage title="Secondary Section" description="Focused learning that develops knowledge, character, and leadership." />} />
+              <Route path="/academics/curriculum" element={<SiteInfoPage title="Our Curriculum" description="A balanced academic programme designed to prepare students for the future." />} />
+              <Route path="/admissions/guidelines" element={<SiteInfoPage title="Admission Guidelines" description="Learn about the steps for joining Great Mind International School." />} />
+              <Route path="/admissions/fees-structure" element={<SiteInfoPage title="Fees Structure" description="Contact the school office for current admission and tuition information." />} />
               
               {/* Interactive Portals */}
               <Route path="/applicants" element={<ApplicantPortal />} />
