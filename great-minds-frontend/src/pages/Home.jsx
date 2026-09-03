@@ -56,20 +56,24 @@ export default function Home() {
                 </div>
                 
                 {/* Hero Overlay Text */}
-                <div className="absolute inset-0 flex flex-col justify-center items-center text-center text-white px-4 z-10">
-                    <h2 className="text-2xl md:text-5xl font-extrabold uppercase tracking-tight text-white mb-4 max-w-3xl">
-                        {sliderImages[currentSlide].title}
-                    </h2>
-                    <p className="max-w-2xl text-sm md:text-lg text-gray-200 mb-8 font-medium">
-                        {sliderImages[currentSlide].description}
-                    </p>
-                    <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none">
-                        <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-4 sm:px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase text-center">
-                            Apply for Admission
-                        </Link>
-                        <Link to="/about-us" className="border-2 border-white text-white font-bold px-4 sm:px-6 py-3 rounded hover:bg-white hover:text-school-navy transition text-sm uppercase text-center">
-                            Explore Campus
-                        </Link>
+                <div className="absolute inset-x-0 bottom-0 flex justify-center text-center text-white z-10">
+                    <div className="w-full rounded-none border-y border-white/25 bg-black/35 px-5 py-5 backdrop-blur-md md:flex md:items-center md:justify-between md:gap-8 md:px-8 md:py-6">
+                        <div className="md:text-left">
+                            <h2 className="text-xl md:text-3xl font-extrabold uppercase tracking-tight text-white mb-3 md:mb-4 max-w-3xl mx-auto md:mx-0">
+                                {sliderImages[currentSlide].title}
+                            </h2>
+                            <p className="max-w-2xl mx-auto md:mx-0 text-sm md:text-base text-gray-200 mb-5 md:mb-0 font-medium">
+                                {sliderImages[currentSlide].description}
+                            </p>
+                        </div>
+                        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto md:w-auto md:flex-none md:mx-0">
+                            <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-4 sm:px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase text-center">
+                                Apply for Admission
+                            </Link>
+                            <Link to="/about-us" className="border-2 border-white text-white font-bold px-4 sm:px-6 py-3 rounded hover:bg-white hover:text-school-navy transition text-sm uppercase text-center">
+                                Explore Campus
+                            </Link>
+                        </div>
                     </div>
                 </div>
 
@@ -82,7 +86,7 @@ export default function Home() {
                 </button>
 
                 {/* Image indicators */}
-                <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20">
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-3 z-20">
                     {indicatorDots.map((_, index) => {
                         const isActive = index === activeIndicatorIndex;
 

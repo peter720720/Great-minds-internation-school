@@ -4,7 +4,7 @@ const Admin = require('./src/models/Admin');
 
 const seedInitialAdmin = async () => {
     try {
-        await mongoose.connect(process.env.MONGO_URI);
+        await mongoose.connect(process.env.MONGO_URI || process.env.MONGO_URL);
         console.log('Database connected for admin provisioning...');
 
         // Check if an admin already exists

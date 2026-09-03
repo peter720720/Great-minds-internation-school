@@ -1,12 +1,16 @@
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Mail, ChevronDown, Menu, X, GraduationCap, Users, ShieldCheck } from 'lucide-react';
 
 // Make sure both 'export' and 'default' keywords are declared here
 export default function DoubleNavbar() {
     const [isOpen, setIsOpen] = useState(false);
     const [activeDropdown, setActiveDropdown] = useState(null);
+    const location = useLocation();
     const navigate = useNavigate();
+    const isAdminRoute = location.pathname === '/admin-login' || location.pathname === '/admin-dashboard';
+
+    if (isAdminRoute) return null;
 
     const handleDropdownToggle = (menu) => {
         setActiveDropdown(activeDropdown === menu ? null : menu);
@@ -35,7 +39,7 @@ export default function DoubleNavbar() {
                 </Link>
 
                 {/* Desktop Navigation Links */}
-                <nav className="hidden lg:flex items-center gap-6 font-semibold text-base">
+                {!isAdminRoute && <nav className="hidden lg:flex items-center gap-6 font-semibold text-base">
                     <Link to="/" className="hover:text-school-gold transition">Home</Link>
                     <Link to="/about-us" className="hover:text-school-gold transition">About Us</Link>
 
@@ -84,23 +88,23 @@ export default function DoubleNavbar() {
                     </div>
 
                     <Link to="/news" className="hover:text-school-gold transition text-base">News & Events</Link>
-                </nav>
+                </nav>}
 
                 {/* Apply Now Primary Action Trigger Button */}
-                <div className="hidden lg:flex items-center gap-4">
+                {!isAdminRoute && <div className="hidden lg:flex items-center gap-4">
                     <Link to="/applicants" className="bg-school-gold text-school-navy font-bold text-xs uppercase px-5 py-2.5 rounded hover:bg-school-goldHover transition tracking-wider shadow-sm">
                         Apply Now
                     </Link>
-                </div>
+                </div>}
 
                 {/* Mobile Toggle Burger Button */}
-                <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-school-navy">
+                {!isAdminRoute && <button onClick={() => setIsOpen(!isOpen)} className="lg:hidden text-school-navy">
                     {isOpen ? <X size={24} /> : <Menu size={24} />}
-                </button>
+                </button>}
             </div>
 
             {/* Mobile Drawer Overlay */}
-            {isOpen && (
+            {isOpen && !isAdminRoute && (
                 <div className="lg:hidden bg-white w-full border-b border-gray-200 py-4 px-4 flex flex-col gap-3 font-semibold shadow-inner">
                     <Link to="/" onClick={() => setIsOpen(false)} className="py-1">Home</Link>
                     <Link to="/about-us" onClick={() => setIsOpen(false)} className="py-1">About Us</Link>

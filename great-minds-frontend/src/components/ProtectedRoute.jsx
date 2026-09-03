@@ -10,8 +10,7 @@ export default function ProtectedRoute({ children, allowedRole }) {
     }
 
     if (allowedRole && user.role !== allowedRole) {
-        // Fallback for role mismatches
-        return <Navigate to="/" replace />;
+        return <Navigate to="/admin-login" replace />;
     }
 
     return children;

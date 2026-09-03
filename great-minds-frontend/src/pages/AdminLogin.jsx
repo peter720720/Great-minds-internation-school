@@ -1,21 +1,27 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useAuth } from '../context/AuthContext';
-import axios from 'axios';
+import api from '../utils/api';
 
 // Ensure 'export default' is explicitly declared on this line
 export default function AdminLogin() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
-    const { login } = useAuth();
+    const { user, token, login } = useAuth();
     const navigate = useNavigate();
+
+    useEffect(() => {
+        if (token && user?.role === 'admin') {
+            navigate('/admin-dashboard', { replace: true });
+        }
+    }, [navigate, token, user]);
 
     const handleLoginSubmit = async (e) => {
         e.preventDefault();
         setError('');
         try {
-            const res = await axios.post('http://localhost:5000/api/admin/admin-login', { email, password });
+            const res = await api.post('/admin/admin-login', { email, password });
             login(res.data.admin, res.data.token);
             navigate('/admin-dashboard');
         } catch (err) {

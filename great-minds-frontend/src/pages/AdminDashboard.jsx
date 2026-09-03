@@ -65,7 +65,7 @@ export default function AdminDashboard() {
                 </div>
                 
                 <button onClick={() => setView('metrics')} className={`flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider rounded transition ${view === 'metrics' ? 'bg-school-gold text-school-navy' : 'hover:bg-school-navyLight'}`}>
-                    <LayoutDashboard size={16} /> Overview
+                    <LayoutDashboard size={16} /> Dashboard
                 </button>
                 <button onClick={() => setView('upload')} className={`flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider rounded transition ${view === 'upload' ? 'bg-school-gold text-school-navy' : 'hover:bg-school-navyLight'}`}>
                     <Upload size={16} /> Media Upload
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
                         <h3 className="text-xl font-bold uppercase text-school-navy mb-6">System Analytics</h3>
                         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
                             <div className="bg-white p-6 rounded shadow-sm border-l-4 border-school-navy">
-                                <p className="text-xs text-gray-400 font-bold uppercase">Total Registered Applicants</p>
+                                <p className="text-xs text-gray-400 font-bold uppercase">Registered Students</p>
                                 <p className="text-3xl font-extrabold text-school-navy mt-2">{metrics.totalApplicants}</p>
                             </div>
                             <div className="bg-white p-6 rounded shadow-sm border-l-4 border-school-gold">
