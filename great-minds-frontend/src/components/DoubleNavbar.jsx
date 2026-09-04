@@ -17,7 +17,9 @@ export default function DoubleNavbar() {
     };
 
     return (
-        <div className="w-full sticky top-0 z-50 shadow-md">
+        <>
+        <div className="h-[106px]" aria-hidden="true" />
+        <div className="w-full fixed top-0 left-0 right-0 z-50 shadow-md">
             {/* FIRST NAVBAR LAYER: Contact & High-Tier Info */}
             <div className="bg-school-navy text-white text-sm py-2 px-4 md:px-8 flex justify-between items-center border-b border-school-navyLight max-sm:justify-end">
                 <div className="hidden sm:flex items-center gap-6">
@@ -112,9 +114,11 @@ export default function DoubleNavbar() {
                     <Link to="/staff-portal" onClick={() => setIsOpen(false)} className="py-1">Staff Access Portal</Link>
                     <Link to="/gallery" onClick={() => setIsOpen(false)} className="py-1">Photo Gallery</Link>
                     <Link to="/contact-us" onClick={() => setIsOpen(false)} className="py-1">Contact Us</Link>
+                    <Link to="/news" onClick={() => setIsOpen(false)} className="py-1">News & Events</Link>
                     <Link to="/applicants" onClick={() => setIsOpen(false)} className="bg-school-navy text-white text-center py-2.5 rounded mt-2">Apply Now</Link>
                 </div>
             )}
         </div>
+        </>
     );
 }
