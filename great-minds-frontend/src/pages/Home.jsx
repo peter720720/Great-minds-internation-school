@@ -46,7 +46,7 @@ export default function Home() {
     return (
         <div className="w-full">
             {/* CAROUSEL SLIDER HERO COMPONENT */}
-            <div className="relative h-[450px] md:h-[550px] bg-black overflow-hidden">
+            <div className="relative h-[600px] md:h-[550px] bg-black overflow-hidden">
                 <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {sliderImages.map((slide, index) => (
                         <div key={index} className="min-w-full h-full relative" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
@@ -57,20 +57,20 @@ export default function Home() {
                 
                 {/* Hero Overlay Text */}
                 <div className="absolute inset-x-0 bottom-0 flex justify-center text-center text-white z-10">
-                    <div className="w-full rounded-none border-y border-white/25 bg-black/35 px-5 py-5 backdrop-blur-md md:flex md:items-center md:justify-between md:gap-8 md:px-8 md:py-6">
+                    <div className="w-full rounded-none border-y border-white/25 bg-black/35 px-3 py-3 backdrop-blur-md md:flex md:items-center md:justify-between md:gap-8 md:px-8 md:py-6">
                         <div className="md:text-left">
-                            <h2 className="text-xl md:text-3xl font-extrabold uppercase tracking-tight text-white mb-3 md:mb-4 max-w-3xl mx-auto md:mx-0">
+                            <h2 className="text-lg md:text-3xl font-extrabold uppercase tracking-tight text-white mb-2 md:mb-4 max-w-3xl mx-auto md:mx-0">
                                 {sliderImages[currentSlide].title}
                             </h2>
-                            <p className="max-w-2xl mx-auto md:mx-0 text-sm md:text-base text-gray-200 mb-5 md:mb-0 font-medium">
+                            <p className="max-w-2xl mx-auto md:mx-0 text-xs md:text-base text-gray-200 mb-3 md:mb-0 font-medium">
                                 {sliderImages[currentSlide].description}
                             </p>
                         </div>
-                        <div className="flex flex-col sm:flex-row justify-center gap-3 sm:gap-4 w-full max-w-xs sm:max-w-none mx-auto md:w-auto md:flex-none md:mx-0">
-                            <Link to="/applicants" className="bg-school-gold text-school-navy font-bold px-4 sm:px-6 py-3 rounded hover:bg-school-goldHover transition text-sm uppercase text-center">
+                        <div className="flex flex-row justify-center gap-2 sm:gap-4 w-full max-w-none mx-auto md:w-auto md:flex-none md:mx-0">
+                            <Link to="/applicants" className="flex-1 bg-school-gold text-school-navy font-bold px-2 sm:px-6 py-2.5 md:py-3 rounded hover:bg-school-goldHover transition text-[10px] sm:text-sm uppercase text-center">
                                 Apply for Admission
                             </Link>
-                            <Link to="/about-us" className="border-2 border-white text-white font-bold px-4 sm:px-6 py-3 rounded hover:bg-white hover:text-school-navy transition text-sm uppercase text-center">
+                            <Link to="/about-us" className="flex-1 border-2 border-white text-white font-bold px-2 sm:px-6 py-2.5 md:py-3 rounded hover:bg-white hover:text-school-navy transition text-[10px] sm:text-sm uppercase text-center">
                                 Explore Campus
                             </Link>
                         </div>
