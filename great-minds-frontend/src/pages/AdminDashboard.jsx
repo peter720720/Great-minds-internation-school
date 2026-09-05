@@ -92,8 +92,8 @@ export default function AdminDashboard() {
                     <Mail size={16} /> Contact Mail ({metrics.unreadMessages})
                 </button>
                 
-                <button onClick={logout} className="mt-auto flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider text-red-400 hover:bg-red-950/40 rounded transition">
-                    <LogOut size={16} /> Terminate Session
+                <button onClick={() => logout('/admin-login')} className="mt-auto flex items-center gap-3 p-3 text-xs uppercase font-bold tracking-wider text-red-400 hover:bg-red-950/40 rounded transition">
+                    <LogOut size={16} /> Logout
                 </button>
             </aside>
 

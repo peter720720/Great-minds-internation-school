@@ -17,7 +17,7 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
         setToken(null);
         localStorage.clear();
-        window.location.href = redirectPath;
+        window.location.href = typeof redirectPath === 'string' ? redirectPath : '/admin-login';
     };
 
     return (
