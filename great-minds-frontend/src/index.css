@@ -60,3 +60,22 @@ label {
 #root {
   min-height: 100vh;
 }
+
+.site-entry {
+  animation: site-entry 2.2s ease-in-out both;
+}
+
+@keyframes site-entry {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .site-entry {
+    animation: none;
+  }
+}

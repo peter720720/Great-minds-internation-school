@@ -47,7 +47,7 @@ export default function Home() {
         <div className="w-full">
             {/* CAROUSEL SLIDER HERO COMPONENT */}
             <div className="relative h-[600px] md:h-[550px] bg-black overflow-hidden">
-                <div className="absolute inset-0 flex transition-transform duration-700 ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                <div className="absolute inset-0 flex transition-transform duration-[1500ms] ease-in-out" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
                     {sliderImages.map((slide, index) => (
                         <div key={index} className="min-w-full h-full relative" style={{ backgroundImage: `url(${slide.image})`, backgroundSize: 'cover', backgroundPosition: 'center' }}>
                             <div className="absolute inset-0 bg-black/50" />
@@ -86,7 +86,7 @@ export default function Home() {
                 </button>
 
                 {/* Image indicators */}
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-3 z-20">
+                <div className="absolute top-[62%] left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center gap-3 z-20">
                     {indicatorDots.map((_, index) => {
                         const isActive = index === activeIndicatorIndex;
 

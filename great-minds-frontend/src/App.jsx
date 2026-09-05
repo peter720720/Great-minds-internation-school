@@ -21,7 +21,7 @@ function App() {
   return (
     <AuthProvider>
       <Router>
-        <div className="flex flex-col min-h-screen bg-school-cream">
+        <div className="site-entry flex flex-col min-h-screen bg-school-cream">
           <DoubleNavbar />
           <main className="flex-grow">
             <Routes>

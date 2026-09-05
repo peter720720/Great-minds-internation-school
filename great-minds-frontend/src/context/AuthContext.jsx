@@ -13,11 +13,11 @@ export const AuthProvider = ({ children }) => {
         localStorage.setItem('gm_token', userToken);
     };
 
-    const logout = () => {
+    const logout = (redirectPath = '/admin-login') => {
         setUser(null);
         setToken(null);
         localStorage.clear();
-        window.location.href = '/admin-login';
+        window.location.href = redirectPath;
     };
 
     return (

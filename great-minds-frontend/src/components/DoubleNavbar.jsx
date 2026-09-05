@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Phone, Mail, ChevronDown, Menu, X, GraduationCap, Users, ShieldCheck } from 'lucide-react';
+import { useAuth } from '../context/AuthContext';
 
 // Make sure both 'export' and 'default' keywords are declared here
 export default function DoubleNavbar() {
@@ -8,7 +9,9 @@ export default function DoubleNavbar() {
     const [activeDropdown, setActiveDropdown] = useState(null);
     const location = useLocation();
     const navigate = useNavigate();
+    const { user } = useAuth();
     const isAdminRoute = location.pathname === '/admin-login' || location.pathname === '/admin-dashboard';
+    const hasAppliedForAdmission = Boolean(user?.studentId || user?.classApplied);
 
     if (isAdminRoute) return null;
 
@@ -75,7 +78,7 @@ export default function DoubleNavbar() {
                         </button>
                         <div className={`absolute top-full left-0 mt-2 w-56 bg-white border border-gray-200 rounded shadow-xl ${activeDropdown === 'students' ? 'block' : 'hidden'} py-2`}>
                             <Link onClick={() => setActiveDropdown(null)} to="/applicants" className="block px-4 py-2 hover:bg-school-cream hover:text-school-gold font-bold text-school-navy">Admission Application</Link>
-                            <a onClick={() => setActiveDropdown(null)} href="http://greatminds.edu.ng" target="_blank" rel="noreferrer" className="block px-4 py-2 hover:bg-school-cream hover:text-school-gold">Great Mind Student Portal ↗</a>
+                            <Link onClick={() => setActiveDropdown(null)} to="/applicants" className="block px-4 py-2 hover:bg-school-cream hover:text-school-gold">Great Mind Student Portal</Link>
                         </div>
                     </div>
 
@@ -93,7 +96,7 @@ export default function DoubleNavbar() {
                 </nav>}
 
                 {/* Apply Now Primary Action Trigger Button */}
-                {!isAdminRoute && <div className="hidden lg:flex items-center gap-4">
+                {!isAdminRoute && !hasAppliedForAdmission && <div className="hidden lg:flex items-center gap-4">
                     <Link to="/applicants" className="bg-school-gold text-school-navy font-bold text-xs uppercase px-5 py-2.5 rounded hover:bg-school-goldHover transition tracking-wider shadow-sm">
                         Apply Now
                     </Link>
@@ -115,7 +118,7 @@ export default function DoubleNavbar() {
                     <Link to="/gallery" onClick={() => setIsOpen(false)} className="py-1">Photo Gallery</Link>
                     <Link to="/contact-us" onClick={() => setIsOpen(false)} className="py-1">Contact Us</Link>
                     <Link to="/news" onClick={() => setIsOpen(false)} className="py-1">News & Events</Link>
-                    <Link to="/applicants" onClick={() => setIsOpen(false)} className="bg-school-navy text-white text-center py-2.5 rounded mt-2">Apply Now</Link>
+                    {!hasAppliedForAdmission && <Link to="/applicants" onClick={() => setIsOpen(false)} className="bg-school-navy text-white text-center py-2.5 rounded mt-2">Apply Now</Link>}
                 </div>
             )}
         </div>
